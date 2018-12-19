@@ -1,0 +1,84 @@
+#prueba0 - burstifier0
+destAddr 1 priority 0
+#prueba1
+destAddr 1 priority 1
+#prueba1
+destAddr 1 priority 2
+#prueba3
+destAddr 2 priority 0
+#prueba4
+destAddr 2 priority 1
+#prueba5
+destAddr 2 priority 2
+#prueba6
+destAddr 3 priority 0
+#prueba7
+destAddr 3 priority 1
+#prueba8
+destAddr 3 priority 2
+#prueba9
+destAddr 4 priority 0
+#prueba10
+destAddr 4 priority 1
+#prueba11
+destAddr 4 priority 2
+#prueba12
+destAddr 5 priority 0
+#prueba13
+destAddr 5 priority 1
+#prueba14
+destAddr 5 priority 2
+#prueba15
+destAddr 6 priority 0
+#prueba16
+destAddr 6 priority 1
+#prueba17
+destAddr 6 priority 2
+#prueba18
+destAddr 7 priority 0
+#prueba19
+destAddr 7 priority 1
+#prueba20
+destAddr 7 priority 2
+#prueba21
+destAddr 8 priority 0
+#prueba22
+destAddr 8 priority 1
+#prueba23
+destAddr 8 priority 2
+#prueba24
+destAddr 9 priority 0
+#prueba25
+destAddr 9 priority 1
+#prueba26
+destAddr 9 priority 2
+#prueba27
+destAddr 10 priority 0
+#prueba28
+destAddr 10 priority 1
+#prueba29
+destAddr 10 priority 2
+#prueba30
+destAddr 11 priority 0
+#prueba31
+destAddr 11 priority 1
+#prueba32
+destAddr 11 priority 2
+#prueba33
+destAddr 12 priority 0
+#prueba34
+destAddr 12 priority 1
+#prueba35
+destAddr 12 priority 2
+#prueba36
+destAddr 13 priority 0
+#prueba37
+destAddr 13 priority 1
+#prueba38
+destAddr 13 priority 2
+#prueba39
+destAddr 14 priority 0
+#prueba40
+destAddr 14 priority 1
+#prueba41
+destAddr 14 priority 2
