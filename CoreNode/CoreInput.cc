@@ -8,15 +8,15 @@
 #include "CoreInput.h"
 
 
-Define_Module(CoreInput);
+Define_Module(ControlInput);
 
-CoreInput::~CoreInput(){
+ControlInput::~ControlInput(){
    free(portLen);
    free(inPortBegin);
    free(outDataBegin);
 }
 
-void CoreInput::initialize(){
+void ControlInput::initialize(){
     //obtengo la direccion de la fuente correspondiente al modulo EdgeAndCore actual
     //para usarla en el calculo de retardo de propagacion
     miDireccion = getParentModule()->getParentModule()->getSubmodule("edgeHost")->getSubmodule("Host")->getSubmodule("source")->par("address");
@@ -98,7 +98,7 @@ void CoreInput::initialize(){
    }
 }
 
-void CoreInput::handleMessage(cMessage *msg){
+void ControlInput::handleMessage(cMessage *msg){
 
 
     cGate *gate = msg->getArrivalGate();
@@ -152,7 +152,7 @@ void CoreInput::handleMessage(cMessage *msg){
 }
 
 // Dado el índice de la compuerta de entrada, calcular el número de fibra correspondente.
-int CoreInput::getInPort(int gateIndex){
+int ControlInput::getInPort(int gateIndex){
    int i;
    // Usa inPortBegin y portLen en el último caso, mirando a qué fibra corresponde el índice.
    for(i=0;i<numPorts-1;i++)
@@ -167,7 +167,7 @@ int CoreInput::getInPort(int gateIndex){
 }
 
 // Se usa el índice de la compuerta de entrada para calcular el número del lambda dentro de la fibra correspondiente
-int CoreInput::getInLambda(int gateIndex){
+int ControlInput::getInLambda(int gateIndex){
   //Primero se calcula el número de la fibra
   int port = getInPort(gateIndex);
   // Luego,  se substrae el índice donde pertenece el puerto. Esto hace que la primera lambda en la fibra, cuente como cero, la segunda fibra como uno, etc. En vez el valor del puerto.
@@ -175,7 +175,7 @@ int CoreInput::getInLambda(int gateIndex){
 }
 
 // Convierte enlaces de datos, identificados por su Id de la fibra y lambda (no color) a compuertas de salida para OXC
-int CoreInput::getOXCGate(int port, int lambda){
+int ControlInput::getOXCGate(int port, int lambda){
     ev << "getInOXC\n";
    Enter_Method("Obteniendo entrada para OXC en el puerto %d y longitud de ona %d\n",port,lambda);
    if((portLen[port] -1) == lambda) // Si es el último lambda de la fibra, es un BCP
@@ -187,7 +187,7 @@ int CoreInput::getOXCGate(int port, int lambda){
 
 // Este método recibe un enlace identificado por el Id de la fibra y el color.
 // Convierte el color a un lambda
-int CoreInput::getLambdaByColour(int port, int colour){
+int ControlInput::getLambdaByColour(int port, int colour){
     ev << "obteniendo longitud de onda por color\n";
     Enter_Method_Silent();
    if (colours[port].count(colour) != 0){//Si el color existe

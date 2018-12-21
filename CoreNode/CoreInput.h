@@ -16,7 +16,7 @@ using namespace std;
 //Este módulo actua como interaz entre los módulos CorecontrolUnit y OXC. Separa canales de datos y de control.
 //También implementa métodos para cambiar los colores a compuertas usando Ids físicos.
 
-class CoreInput : public cSimpleModule
+class ControlInput : public cSimpleModule
 {
    private:
 
@@ -29,7 +29,7 @@ class CoreInput : public cSimpleModule
       double LinkDelay;
 
    public:
-      virtual ~CoreInput();
+      virtual ~ControlInput();
       //Retorna la compuerta OXG a través de la cuál la ráfaga pasará.
       int getOXCGate(int port, int lambda);
       int getLambdaByColour(int port,int colour);

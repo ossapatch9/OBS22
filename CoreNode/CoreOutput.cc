@@ -7,9 +7,9 @@
 
 #include "CoreOutput.h"
 
-Define_Module(CoreOutput);
+Define_Module(ControlOutput);
 
-CoreOutput::~CoreOutput(){
+ControlOutput::~ControlOutput(){
    int i;
    for(i=0;i<numPorts;i++)
    free(gate2Colour[i]);
@@ -19,7 +19,7 @@ CoreOutput::~CoreOutput(){
    free(outPortBegin);
 }
 
-void CoreOutput::initialize(){
+void ControlOutput::initialize(){
    numPorts = par("numPorts");
 
    const char* portLenStr = par("lambdasPerPort").stringValue();
@@ -101,7 +101,7 @@ void CoreOutput::initialize(){
    }
 }
 
-void CoreOutput::handleMessage(cMessage *msg){
+void ControlOutput::handleMessage(cMessage *msg){
 
     cGate *gate = msg->getArrivalGate();
     int msgPort = getOutPort(gate->getIndex());
@@ -111,7 +111,7 @@ void CoreOutput::handleMessage(cMessage *msg){
 
     send(msg,"out",outPortBegin[msgPort] + msgLambda); // Reenvia el paquete entrante a la corresponsiente compuerta de salida
 }
-int CoreOutput::getOutPort(int gateIndex){
+int ControlOutput::getOutPort(int gateIndex){
    if(gateIndex < numPorts) //Es un BCP
       return gateIndex;
    else{ // Canal de datos
@@ -125,7 +125,7 @@ int CoreOutput::getOutPort(int gateIndex){
    return -1;
 }
 
-int CoreOutput::getOutLambda(int gateIndex){
+int ControlOutput::getOutLambda(int gateIndex){
    int port = getOutPort(gateIndex); //Se usa getOutPort  para saber cual es la fibra a la cual pertenece el canal
    if(gateIndex < numPorts) //BCP
       return portLen[port] - 1; //Retorna el último lambda para esta fibra
@@ -133,12 +133,12 @@ int CoreOutput::getOutLambda(int gateIndex){
       return gateIndex - (outPortBegin[port] + (numPorts - port)); // La última suma se realizó para tener el cuenta el primer canal de datos es proporcional para el número  of the number of fibers
 }
 
-int CoreOutput::getOXCGate(int port,int lambda){
+int ControlOutput::getOXCGate(int port,int lambda){
    Enter_Method("peticion de la salida OXC, para la compuerta %d, y longitud de onda %d\n",port,lambda);
    return inDataBegin[port] + lambda - numPorts;
 }
 
-int CoreOutput::getLambdaByColour(int port,int colour){
+int ControlOutput::getLambdaByColour(int port,int colour){
    Enter_Method("obteniendo longitud de onda por puerto %d y color %d\n",port,colour);
    if (colours[port].count(colour) != 0){//Si el color no existe
        return colours[port][colour];
@@ -149,7 +149,7 @@ int CoreOutput::getLambdaByColour(int port,int colour){
    }
 }
 
-int CoreOutput::getColourByLambda(int port,int lambda){
+int ControlOutput::getColourByLambda(int port,int lambda){
     Enter_Method_Silent();
    return gate2Colour[port][lambda];
 }

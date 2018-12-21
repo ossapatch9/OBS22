@@ -29,8 +29,8 @@ class CoreControlLogic : public cSimpleModule{
 
      CoreOutputHorizon *gatesHorizon; //Puntero al horizonte de salida.
      RoutingNuevo *routingNuevo; //Puntero a la clases rounting
-     CoreInput *coreInput; //Puntero al módulo Input.
-     CoreOutput *coreOutput; //Puntero al módulo Output.
+     ControlInput *coreInput; //Puntero al módulo Input.
+     ControlOutput *coreOutput; //Puntero al módulo Output.
      OpticalCrossConnect *oxc; //Puntero a OXC.
 
      simtime_t processingTime; //Unidad de control de procesamiento de tiempo para cada BCP.

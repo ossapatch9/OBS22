@@ -38,9 +38,9 @@ void CoreControlLogic::initialize() {
             parent->getSubmodule("GatesHorizon"));
     routingNuevo = check_and_cast<RoutingNuevo*>(
             (parent->getParentModule())->getSubmodule("routingNuevo"));
-    coreInput = check_and_cast<CoreInput*>(
+    coreInput = check_and_cast<ControlInput*>(
             (parent->getParentModule())->getSubmodule("coreInput"));
-    coreOutput = check_and_cast<CoreOutput*>(
+    coreOutput = check_and_cast<ControlOutput*>(
             (parent->getParentModule())->getSubmodule("coreOutput"));
     oxc = check_and_cast<OpticalCrossConnect*>(
             (parent->getParentModule())->getSubmodule("OXC"));

@@ -17,7 +17,7 @@ using namespace std;
 // Este módulo realiza la tarea inversa de CoreInput: reune los canales de control y de datos y los reordena con el fin de conectar el coreNode con otro nodo OBS.
 // Es compatible con los "colores" de los canales de datos.
 
-class CoreOutput : public cSimpleModule{
+class ControlOutput : public cSimpleModule{
    private:
       vector< map<int,int> > colours; //vector del mapa de colores de salida (un mapa por cada fibra).
       int **gate2Colour; //mapeo entre puerto/lambda y colores.
@@ -31,7 +31,7 @@ class CoreOutput : public cSimpleModule{
       int getOutPort(int gateIndex);
       int getOutLambda(int gateIndex);
    public:
-      virtual ~CoreOutput();
+      virtual ~ControlOutput();
       // Convierte el puerto y lambda a compuertas de salida hacia OXG.
       int getOXCGate(int port,int lambda);
       int getLambdaByColour(int port,int colour);
